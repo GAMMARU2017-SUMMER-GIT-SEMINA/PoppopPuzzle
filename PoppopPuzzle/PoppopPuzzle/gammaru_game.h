@@ -2,11 +2,14 @@
 #define GAMMARU_GAME_H_
 #include <cstdio>
 #include <cassert>
-
 #ifdef __unix__
 #include <termios.h>
 #include <unistd.h>
 #include <fcntl.h>
+
+
+#define width       10
+#define height      10
 
 #define BLACK       30
 #define RED         31
