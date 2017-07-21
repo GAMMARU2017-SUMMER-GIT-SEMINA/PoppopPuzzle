@@ -38,8 +38,8 @@ void startInput() {
 			c = getch();
 			if (c == 'w' && y > 1) y--;
 			else if (c == 'a' && x > 1) x--;
-			else if (c == 's' && y <= HEIGHT) y++;
-			else if (c == 'd' && x <= WIDTH) x++;
+			else if (c == 's' && y < HEIGHT) y++;
+			else if (c == 'd' && x < WIDTH) x++;
 			else if (c == ' ') {
 				deleteBlock(x-1, y-1);
 				//break;
