@@ -102,5 +102,5 @@ void color_clear() {
 void UpdateMap();
 void startInput();
 void initialize();
-void deleteBlock(int, int);
+void deleteBlock(int, int,int);
 #endif
