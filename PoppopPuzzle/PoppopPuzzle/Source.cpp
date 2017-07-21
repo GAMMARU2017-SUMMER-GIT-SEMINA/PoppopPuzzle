@@ -34,18 +34,17 @@ void startInput() {
 		if (c != 0) {
 			gotoxy(x, y);
 			printf(" ");
-			UpdateMap();
+
 			c = getch();
-			if (c == 'w') {
-				y--;
-			}
-			else if (c == 'a') x--;
-			else if (c == 's') y++;
-			else if (c == 'd') x++;
+			if (c == 'w' && y > 1) y--;
+			else if (c == 'a' && x > 1) x--;
+			else if (c == 's' && y <= HEIGHT) y++;
+			else if (c == 'd' && x <= WIDTH) x++;
 			else if (c == ' ') {
-				deleteBlock(x, y);
+				deleteBlock(x-1, y-1);
 				//break;
 			}
+			UpdateMap();
 			gotoxy(x, y);
 			printf("_");
 
@@ -72,19 +71,18 @@ void UpdateMap()
 void deleteBlock(int x, int y)
 {
 	int thisColor = map[y][x].color;
+	map[y][x].color = BLACK;
 	if (y > 0 && y < HEIGHT)
 	{
 
 		if (thisColor == map[y - 1][x].color)
 		{
 			map[y][x].shape = ' ';
-			map[y][x].color = BLACK;
 			deleteBlock(x, y - 1);
 		}
 		if (thisColor == map[y + 1][x].color)
 		{
 			map[y][x].shape = ' ';
-			map[y][x].color = BLACK;
 			deleteBlock(x, y + 1);
 		}
 	}
@@ -93,18 +91,15 @@ void deleteBlock(int x, int y)
 		if (thisColor == map[y][x - 1].color)
 		{
 			map[y][x].shape = ' ';
-			map[y][x].color = BLACK;
 			deleteBlock(x - 1, y);
 		}
 		if (thisColor == map[y][x + 1].color)
 		{
 			map[y][x].shape = ' ';
-			map[y][x].color = BLACK;
 			deleteBlock(x + 1, y);
 		}
+
 	}
-
-
 }
 
 
