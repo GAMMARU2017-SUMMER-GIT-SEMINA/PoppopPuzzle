@@ -32,6 +32,37 @@
 
 #endif
 
+#ifdef __TEST_SOURCE_C__
+#define __TEST_SOURCE_C__
+void startInput() {
+	int count = 0;
+	int x = 1, y = 1;
+	while (1) {
+		int c = kbhit();
+		if (c != 0) {
+			gotoxy(x, y);
+			printf(" ");
+			c = getch();
+			if (c == 'w') {
+				y--;
+			}
+			else if (c == 'a') x--;
+			else if (c == 's') y++;
+			else if (c == 'd') x++;
+			else if (c == ' ') {
+				break;
+			}
+			gotoxy(x, y);
+			printf("c");
+
+		}
+	}
+	printf("space!");
+	letter_color(RED);
+	printf("hello world\n");
+}
+
+#endif
 
 #ifdef __unix__
 int kbhit(void)
